@@ -66,16 +66,3 @@ public class Cadena {
         scanner.close();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
