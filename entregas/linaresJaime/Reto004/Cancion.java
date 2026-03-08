@@ -22,10 +22,10 @@ public class Cancion {
         }
     }
 
-    public void enFavoritos(){
-        System.out.println(this.favorita == true ? "Si" : "No");
+    public boolean isFavorita(){
+        return this.favorita;
     }
-
+    
     public String toString(){
         return artista + " - " + titulo + " [" + duracion + "s]";
     }
