@@ -14,10 +14,10 @@ public class Cadena {
             int longitud = 0;
 
             for (int i = 1; i <= cadena.length() - posicionActual; i++) {
-                String ventana = cadena.substring(posicionActual, posicionActual + i);
-                if (diccionario.contains(ventana)) {
-                    coincidencia = ventana;
-                    longitud = ventana.length();
+                String subcadena = cadena.substring(posicionActual, posicionActual + i);
+                if (diccionario.contains(subcadena)) {
+                    coincidencia = subcadena;
+                    longitud = subcadena.length();
                 } else {
                     break;
                 }
