@@ -8,6 +8,20 @@ public class Biblioteca {
             this.cancionesFavoritas = new Lista();
             this.playlists = new Lista();
         }
+        
+        private Playlist obtenerPlaylistPorIndice(int indice) {
+            Node iterator = playlists.getFirst();
+            int count = 0;
+            
+            while (iterator != null) {
+                if (count == indice) {
+                    return (Playlist) iterator.getValue();
+                }
+                count++;
+                iterator = iterator.getNext();
+            }
+            return null;
+        }
     
         public void anadirAFavoritos(Cancion cancion) {
             if (!cancionEsFavorita(cancion)) {
@@ -20,19 +34,8 @@ public class Biblioteca {
         }
     
         public void eliminarDeFavoritos(int indiceCancion) {
-            Node iterator = cancionesFavoritas.getFirst();
-            int count = 0;
-    
-            while (iterator != null) {
-                if (count == indiceCancion) {
-                    Cancion cancionAEliminar = (Cancion) iterator.getValue();
-    
-                    cancionesFavoritas.deleteNode(iterator);
-                    System.out.println("Canción eliminada de favoritos: " + cancionAEliminar);
-                    return;
-                }
-                count++;
-                iterator = iterator.getNext();
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+            if (playlist != null) {
             }
             System.out.println("Índice de canción inválido.");
         }
@@ -50,34 +53,17 @@ public class Biblioteca {
     
         public void eliminarPlaylist(int indice) {
             Lista nuevaLista = new Lista();
-            int count = 0;
-            Node iterator = playlists.getFirst();
-    
-            while (iterator != null) {
-                if (count != indice) {
-                    nuevaLista.insertEnd(iterator.getValue());
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                count++;
-                iterator = iterator.getNext();
-            }
             playlists = nuevaLista;
             System.out.println("Playlist eliminada.");
         }
     
         public void anadirCancionAPlaylist(int indicePlaylist, Cancion cancion) {
-            Node iterator = playlists.getFirst();
-            int count = 0;
-    
-            while (iterator != null) {
-                if (count == indicePlaylist) {
-                    Playlist playlist = (Playlist) iterator.getValue();
-                    playlist.anadirCancion(cancion);
-                    System.out.println("Canción añadida a la playlist '" + playlist.getTitulo() + "'.");
-                    return;
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                count++;
-                iterator = iterator.getNext();
-            }
             System.out.println("Índice de playlist inválido.");
         }
     
@@ -87,45 +73,24 @@ public class Biblioteca {
         }
     
         public void eliminarCancionDePlaylist(int indicePlaylist, int indiceCancion) {
-            Node iterator = playlists.getFirst();
-            int count = 0;
-    
-            while (iterator != null) {
-                if (count == indicePlaylist) {
-                    Playlist playlist = (Playlist) iterator.getValue();
-                    playlist.eliminarCancion(indiceCancion);
-                    return;
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                count++;
-                iterator = iterator.getNext();
-            }
     
             System.out.println("Índice de playlist inválido.");
         }
     
         public void verPlaylists() {
             System.out.println("=== Playlists ===");
-            int count = 0;
-            Node iterator = playlists.getFirst();
-    
-            while (iterator != null) {
-                Playlist playlist = (Playlist) iterator.getValue();
-                System.out.println(count + ". " + playlist.getTitulo() + ":");
-                iterator = iterator.getNext();
-                count++;
-            }
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
+                }
         }
     
         public Playlist obtenerPlaylist(int indice) {
-            Node iterator = playlists.getFirst();
-            int count = 0;
-            while (iterator != null) {
-                if (count == indice) {
-                    return (Playlist) iterator.getValue();
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                count++;
-                iterator = iterator.getNext();
-            }
             return null;
         }
     
@@ -134,28 +99,16 @@ public class Biblioteca {
         }
     
         public String verCancionesDePlaylist(int indicePlaylist) {
-            Node iterator = playlists.getFirst();
-            int count = 0;
-    
-            while (iterator != null) {
-                if (count == indicePlaylist) {
-                    Playlist playlist = (Playlist) iterator.getValue();
-                    return playlist.toString();
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                count++;
-                iterator = iterator.getNext();
-            }
             return "Índice de playlist inválido.";
         }
     
         private boolean cancionEsFavorita(Cancion cancion) {
-            Node iterator = cancionesFavoritas.getFirst();
-            while (iterator != null) {
-                if (iterator.getValue().equals(cancion)) {
-                    return true;
+            Playlist playlist = obtenerPlaylistPorIndice(indicePlaylist);
+                if (playlist != null) {
                 }
-                iterator = iterator.getNext();
-            }
             return false;
         }
 }
