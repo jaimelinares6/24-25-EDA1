@@ -82,21 +82,8 @@ public class Biblioteca {
         }
     
         public void crearCancionYAnadir(int indicePlaylist, String titulo, String artista, int duracion) {
-            Node iterator = playlists.getFirst();
-            int count = 0;
-            Cancion cancion = new Cancion(titulo, artista, duracion);
-    
-            while (iterator != null) {
-                if (count == indicePlaylist) {
-                    Playlist playlist = (Playlist) iterator.getValue();
-                    playlist.anadirCancion(cancion);
-                    System.out.println("Canción añadida a la playlist '" + playlist.getTitulo() + "'.");
-                    return;
-                }
-                count++;
-                iterator = iterator.getNext();
-            }
-            System.out.println("Índice de playlist inválido.");
+             Cancion cancion = new Cancion(titulo, artista, duracion);
+             anadirCancionAPlaylist(indicePlaylist, cancion);
         }
     
         public void eliminarCancionDePlaylist(int indicePlaylist, int indiceCancion) {
