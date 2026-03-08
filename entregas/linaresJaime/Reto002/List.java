@@ -28,15 +28,15 @@ public class List {
     }
 
     public void insertFront(String value) {
-        Node n = new Node(value);
-        if (this.first == null) {
-            this.first = n;
-        }else {
-            n.setNext(this.first);
-            this.first = n;
-        } 
-        size++;
-    }
+    Node newNode = new Node(value);
+    if (this.first == null) {
+        this.first = newNode;
+    }else {
+        newNode.setNext(this.first);
+        this.first = newNode;
+    } 
+    size++;
+}
 
     public void deleteEnd() {
         if (this.first != null) {
